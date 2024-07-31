@@ -1,0 +1,9 @@
+.cdk-virtual-scroll-data-source-example .viewport {
+    height: 400px;
+    width: 600px;
+    border: 1px solid black;
+  }
+  
+  .cdk-virtual-scroll-viewport {
+    overflow-x: auto; /* Enable horizontal scroll */
+  }

@@ -9,14 +9,13 @@ export interface RouteInfo {
 }
 
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard',     title: 'Dashboard',         icon:'nc-bank',       class: '' },
-    { path: '/icons',         title: 'Icons',             icon:'nc-diamond',    class: '' },
-    { path: '/maps',          title: 'Maps',              icon:'nc-pin-3',      class: '' },
-    { path: '/notifications', title: 'Notifications',     icon:'nc-bell-55',    class: '' },
-    { path: '/user',          title: 'User Profile',      icon:'nc-single-02',  class: '' },
-    { path: '/table',         title: 'Table List',        icon:'nc-tile-56',    class: '' },
-    { path: '/typography',    title: 'Typography',        icon:'nc-caps-small', class: '' },
-    { path: '/upgrade',       title: 'Upgrade to PRO',    icon:'nc-spaceship',  class: 'active-pro' },
+    { path: '/dashboard',     title: 'Tổng hợp',         icon:'nc-chart-pie-36',       class: '' },
+    { path: '/product',    title: 'Hàng hóa',        icon:'nc-box-2', class: '' },
+    { path: '/qr',    title: 'Mã hàng hóa',        icon:'nc-key-25', class: '' },
+    { path: '/InOut/history',    title: 'Lịch sử nhập/Xuất',        icon:'nc-delivery-fast', class: '' },
+    { path: '/InOut/product-in',    title: 'Nhập hàng',        icon:'nc-delivery-fast', class: '' },
+    { path: '/InOut/product-out',    title: 'Xuất hàng',        icon:'nc-delivery-fast', class: '' },
+    // { path: '/report',     title: 'Báo cáo ',         icon:'nc-chart-pie-36',       class: '' },
 ];
 
 @Component({

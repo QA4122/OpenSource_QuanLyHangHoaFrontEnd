@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+<nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent" style=" z-index: 90;">
   <div class="container-fluid">
     <div class="navbar-wrapper">
       <div class="navbar-toggle">
@@ -11,55 +11,19 @@
       </div>
       <a class="navbar-brand" href="javascript:void(0)">{{getTitle()}}</a>
     </div>
-    <button class="navbar-toggler" type="button" (click)="collapse()"
-      [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
-      <span class="navbar-toggler-bar navbar-kebab"></span>
-      <span class="navbar-toggler-bar navbar-kebab"></span>
-      <span class="navbar-toggler-bar navbar-kebab"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="collapseExample" [ngbCollapse]="isCollapsed">
-      <form>
-        <div class="input-group no-border">
-          <input type="text" value="" class="form-control" placeholder="Search...">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <i class="nc-icon nc-zoom-split"></i>
-            </div>
-          </div>
+    <div class="flex flex-row-reverse gap-x-4" style="z-index: 99;">
+        <div >
+          <mat-icon matBadgeColor="primary" fontIcon="person" [matMenuTriggerFor]="profile"></mat-icon>
+          <mat-menu #profile="matMenu" style="position: relative; z-index:99;">
+           <app-account-menu style="margin-top: 10px;"></app-account-menu>
+          </mat-menu>
         </div>
-      </form>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link btn-magnify" href="javascript:void(0)">
-            <i class="nc-icon nc-layout-11"></i>
-            <p>
-              <span class="d-lg-none d-md-block">Stats</span>
-            </p>
-          </a>
-        </li>
-
-        <li class="nav-item btn-rotate" ngbDropdown placement="bottom-left">
-          <a class="nav-link" ngbDropdownToggle id="navbarDropdownMenuLink" >
-            <i class="nc-icon nc-bell-55"></i>
-            <p>
-              <span class="d-lg-none d-md-block">Some Actions</span>
-            </p>
-          </a>
-          <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu dropdown-menu-right">
-            <a ngbDropdownItem href="javascript:void(0)">Action</a>
-            <a ngbDropdownItem href="javascript:void(0)">Another action</a>
-            <a ngbDropdownItem href="javascript:void(0)">Something else here</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link btn-rotate" href="javascript:void(0)">
-            <i class="nc-icon nc-settings-gear-65"></i>
-            <p>
-              <span class="d-lg-none d-md-block">Account</span>
-            </p>
-          </a>
-        </li>
-      </ul>
+        <div>
+          <mat-icon [matBadge]="notiCount" [matBadgeHidden]="isHidden" matBadgeColor="primary" fontIcon="notifications" [matMenuTriggerFor]="menu" (click)="LoadData()"></mat-icon>
+          <mat-menu #menu="matMenu" style="position: absolute; z-index:99;">
+           <app-notification style="z-index: 99;" id="notification" style="margin-top: 10px;" (reload)="getNoti()" [UnREADnotifycations]="UnREADnotifycations" [READnotifycations]="READnotifycations"></app-notification>
+          </mat-menu>
+        </div>
     </div>
   </div>
 </nav>

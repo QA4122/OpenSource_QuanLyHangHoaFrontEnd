@@ -1,0 +1,27 @@
+<div class="container" style="z-index: 99;">
+    <div class="flex flex-row gap-x-4">
+         <strong>Chưa đọc</strong>
+         <button (click)="MarkAsRead()" style="z-index: 99;"><strong>Đánh dấu tất cả đã đọc</strong></button>
+    </div>
+    <div *ngFor="let noti of UnREADnotifycations" >
+        <div class="flex flex-column" (click)="ViewNoti(noti)" style="background-color: lightblue;">
+            <div>
+                <strong>{{noti.title}}</strong>
+            </div>
+            <div>
+                {{noti.content}}
+            </div>
+        </div>
+    </div>
+    <div><strong>Đã xem</strong></div>
+    <div *ngFor="let noti of READnotifycations" >
+        <div class="flex flex-column" (click)="ViewNoti(noti)">
+            <div>
+                <strong>{{noti.title}}</strong>
+            </div>
+            <div>
+                {{noti.content}}
+            </div>
+        </div>
+    </div>
+</div>

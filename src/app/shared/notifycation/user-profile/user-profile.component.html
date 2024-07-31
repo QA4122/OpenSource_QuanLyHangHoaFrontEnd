@@ -1,0 +1,43 @@
+<div class="flex flex-row w-full">
+    <div class="w-2/6">
+
+    </div>
+    <div class="flex flex-column w-4/6">
+        <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Họ tên</mat-label>
+            <input matInput type="text" [(ngModel)]="profile.fullName">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Ngày sinh</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="profile.dob">
+            <mat-hint>ngày/tháng/năm</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false"
+                       style="margin-bottom: 10px;">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Đổi mật khẩu
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="w-full flex flex-column">
+                <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Mật khẩu hiện tại</mat-label>
+                    <input matInput type="text" [(ngModel)]="changepassword.curentPassword">
+                </mat-form-field>
+                <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Mật khẩu mới</mat-label>
+                    <input matInput type="text" [(ngModel)]="changepassword.newPassword">
+                </mat-form-field>
+            </div>
+        </mat-expansion-panel>
+        <div class="flex flex-row-reverse gap-x-8">
+            <button mat-flat-button style="background-color: green; color: white;" class="rounded-full" (click)="Save()">	<mat-icon style="color:white">check_circle</mat-icon>Lưu</button>
+            <button mat-flat-button style="background-color: red;color: white;" class="rounded-full"(click)="Back()"><mat-icon style="color: white;">cancel</mat-icon>Thoát</button>
+          </div>
+    </div>
+</div>
