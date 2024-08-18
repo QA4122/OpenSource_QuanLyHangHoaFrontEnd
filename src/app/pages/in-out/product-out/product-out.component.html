@@ -1,0 +1,63 @@
+<h1 >
+    Xuất hàng 
+  </h1>  
+  <div style="margin-top:10px;margin-bottom: 10px; ">
+    <mat-button-toggle-group [(ngModel)]="isCamera" aria-label="Font Style" (change)="changeMode($event.value)">
+      <mat-button-toggle value="true">Camera</mat-button-toggle>
+      <mat-button-toggle value="false">Thiết bị quét cầm tay</mat-button-toggle>
+    </mat-button-toggle-group>
+    <zxing-scanner  *ngIf="isCamera"
+                    [disabled]="isCameraIn"
+                    #scanner
+                    [start]="isCamera"
+                    [device]="currentDevice"
+                    (scanSuccess)="handleQrCodeResultOut($event)"
+                    [formats]="['QR_CODE', 'EAN_13', 'CODE_128', 'DATA_MATRIX']">
+
+    </zxing-scanner>
+  </div>
+  <div mat-tab-content>
+    <mat-form-field appearance="fill" *ngIf="!isCamera">
+      <mat-label>Click để bắt đầu scan</mat-label>
+      <input matInput type="text"(change)="ScanOut($event)" [(ngModel)]="qrData" (focus)="onFocus()" (blur)="onBlur()">
+    </mat-form-field>
+    <div *ngIf="isScanIn" style="color: green" class="flex flex-row">
+      <mat-icon style="color: green;">fiber_manual_record</mat-icon>
+      <p style="margin-top: 3px;">Đang scan</p>
+    </div>
+    <div *ngIf="!isScanIn" style="color: red" class="flex flex-row">
+      <mat-icon style="color: red;">fiber_manual_record</mat-icon>
+      <p style="margin-top: 3px;">Không scan</p>
+    </div>
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Người nhận:</mat-label>
+      <input matInput  [(ngModel)]="InOut.Receiver" [formControl]="ContentFormControl" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="ContentFormControl.hasError('required')">
+        <strong>Cần có</strong> người nhận nhập hàng
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Người giao:</mat-label>
+      <input matInput  [(ngModel)]="InOut.Deliver" [formControl]="ContentFormControl" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="ContentFormControl.hasError('required')">
+        <strong>Cần có</strong> người giao nhập hàng
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="w-full" appearance="fill" >
+      <mat-label>Tên hàng</mat-label>
+      <input matInput [(ngModel)]="product.productName" readonly>
+    </mat-form-field>
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label >Đơn vị tính</mat-label>
+      <input matInput [(ngModel)]="product.unit" readonly>
+    </mat-form-field>
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label >Đơn giá</mat-label>
+      <input matInput [(ngModel)]="product.price" readonly>
+    </mat-form-field>
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Nhà cung cấp</mat-label>
+      <input matInput  [(ngModel)]="product.saler" readonly>
+    </mat-form-field>
+    
+  </div>

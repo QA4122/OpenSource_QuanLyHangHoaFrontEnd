@@ -1,0 +1,8 @@
+<div class="flex flex-column">
+    <div>Nhập số lượng hàng hóa</div>
+    <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Số lượng:</mat-label>
+        <input matInput type="number" [(ngModel)]="amount">
+    </mat-form-field>
+    <button mat-flat-button style="background-color: green; color: white;" class="rounded-full" (click)="Save()"><mat-icon style="color:white">check_circle</mat-icon>Xác nhận</button>
+</div>
